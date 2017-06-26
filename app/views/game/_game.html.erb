@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-6">
+    <ol>
+    <% @images.each do |image_uri| %>
+      <li><%= image_tag(image_uri) %></li>
+    <% end %>
+    </ol>
+  </div>
+  <div class="col-6">
+  <%= form_tag("/game/submit", remote: true) do %>
+    <% @names.each do |name| %>
+      <div class="form-group row">
+        <%= label_tag(:answer, name, class: 'col-4 col-form-label') %>
+        <div class="col-8">
+          <%= text_field_tag(:answer, '', name: "answer[][number]", class: 'form-control') %>
+          <%= hidden_field_tag(:name, name, name: "answer[][name]") %>
+        </div>
+      </div>
+    <% end %>
+    <%= submit_tag "Submit" %>
+  <% end %>
+  </div>
+</div>

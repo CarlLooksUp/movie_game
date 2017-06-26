@@ -1,0 +1,14 @@
+<h1>Guess the stars!</h1>
+
+<%= form_tag("/game/search", method: "get", remote: true) do %>
+  <%= label_tag(:search, "Enter a movie title to begin") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<div id="scoreboard">
+  <div id="scoreboard_label">Score</div>
+  <div id="score">0</div>
+</div>
+
+<div id="game_pane">
+</div>

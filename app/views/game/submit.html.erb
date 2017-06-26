@@ -1,0 +1,11 @@
+<% @answers.each do |k, answer| %>
+  <p><%= k %>  <%= answer %>
+
+<% end %>
+
+<%= @values.each do |value| %>
+  <p><%= value[:number] %>  <%= value[:name] %>
+<% end %>
+
+<h3>correct</h3>
+<%= @correct_answers %>

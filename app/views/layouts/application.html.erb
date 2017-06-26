@@ -7,8 +7,25 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div id="wrapper">
+      <div class="container">
+        <div class="alert-content">
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
+          <% end %>
+        </div>
+      </div>
+      <div id="content" class="container">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+      <% if Rails.env.development? and false %>
+        <div id="debug" class="container">
+          <%= debug(params) %>
+        </div>
+      <% end %>
+    </div>
   </body>
 </html>
